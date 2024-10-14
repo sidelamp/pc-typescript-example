@@ -9,7 +9,9 @@
     "dev": "concurrently -n webpack,playcanvas-watch \"npm run dev:watch\" \"npm run dev:playcanvas-watch\"",
     "dev:watch": "webpack --watch --mode=development",
     "dev:playcanvas-watch": "node node_modules/playcanvas-sync/pcwatch.js --force",
-    "build": "webpack && node node_modules/playcanvas-sync/pcsync.js pushAll",
+    "build": "webpack",
+    "push": "node node_modules/playcanvas-sync/bin/pcsync.js pushAll --yes",
+    "bp": "webpack && node node_modules/playcanvas-sync/bin/pcsync.js pushAll --yes",
     "prettier:check": "cross-var prettier --check $npm_package_config_prettier_pattern",
     "prettier:all": "cross-var prettier --write $npm_package_config_prettier_pattern",
     "prettier:staged": "prettier --write",
@@ -30,11 +32,11 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "playcanvas": "^1.53.1",
-    "playcanvas-sync": "github:playcanvas/playcanvas-sync#acc64ec5b7ec8ba36f786424c217fc3c6912ae31",
+    "playcanvas-sync": "github:playcanvas/playcanvas-sync",
     "prettier": "^2.5.1",
     "ts-loader": "^9.2.6",
-    "typescript": "^4.5.5",
-    "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
+    "typescript": "^5.6.3",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
   }
 }

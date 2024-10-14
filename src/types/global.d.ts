@@ -1,18 +1,7 @@
-import { pc } from "playcanvas";
-
 declare global {
-  const pc: typeof pc;
-
-  type TDebugSystem = {
-    enabledCategories: TDebugCategory[];
-    isCategoryEnabled(category: TDebugCategory): boolean;
-    enableCategory(category: TDebugCategory): void;
-  };
-
-  type TTimeout = ReturnType<typeof setTimeout>;
-  type TInterval = ReturnType<typeof setInterval>;
-
-  interface Window {
-    debugSystem: TDebugSystem;
+  namespace pc {
+    type HandleEventCallback = (arg1?: any, arg2?: any, arg3?: any, arg4?: any, arg5?: any, arg6?: any, arg7?: any, arg8?: any) => any;
   }
 }
+
+export { };

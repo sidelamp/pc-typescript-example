@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TAttributeParams } from "./attributes";
 
 // Base class to inherit from for script types

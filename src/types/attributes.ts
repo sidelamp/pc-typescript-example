@@ -1,24 +1,32 @@
+// export type TJsonAttributeSchemaProp = {
+//   name: string;
+//   type: "number" | "string";
+//   default: number | string;
+// };
+
+type pcType =
+  | "boolean"
+  | "number"
+  | "string"
+  | "json"
+  | "asset"
+  | "entity"
+  | "rgb"
+  | "rgba"
+  | "vec2"
+  | "vec3"
+  | "vec4"
+  | "curve";
+
 export type TJsonAttributeSchemaProp = {
   name: string;
-  type: "number" | "string";
+  type: pcType;
   default: number | string;
 };
 
 // A duplicate copy of the inline type definition in Playcanvas attributes.add(param1...)
 export type TAttributeParams = {
-  type:
-    | "boolean"
-    | "number"
-    | "string"
-    | "json"
-    | "asset"
-    | "entity"
-    | "rgb"
-    | "rgba"
-    | "vec2"
-    | "vec3"
-    | "vec4"
-    | "curve";
+  type: pcType;
   default?: any;
   title?: string;
   description?: string;
