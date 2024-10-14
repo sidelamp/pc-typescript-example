@@ -1,33 +1,32 @@
-// export type TJsonAttributeSchemaProp = {
-//   name: string;
-//   type: "number" | "string";
-//   default: number | string;
-// };
+import { Curve, Vec2, Vec3, Vec4 } from "playcanvas";
 
-type pcType =
-  | "boolean"
-  | "number"
-  | "string"
-  | "json"
-  | "asset"
-  | "entity"
-  | "rgb"
-  | "rgba"
-  | "vec2"
-  | "vec3"
-  | "vec4"
-  | "curve";
+export enum AttributeSchema {
+  boolean = "boolean",
+  number = "number",
+  string = "string",
+  entity = "entity",
+  asset = "asset",
+  json = "json",
+  rgb = "rgb",
+  rgba = "rgba",
+  vec2 = "vec2",
+  vec3 = "vec3",
+  vec4 = "vec4",
+  curve = "curve",
+};
+
+type pcType = boolean | number | string | pc.Entity | Vec2 | Vec3 | Vec4 | Curve | undefined;
 
 export type TJsonAttributeSchemaProp = {
   name: string;
-  type: pcType;
-  default: number | string;
+  type: AttributeSchema;
+  default?: pcType | pcType[];
+  array?: boolean;
 };
 
-// A duplicate copy of the inline type definition in Playcanvas attributes.add(param1...)
 export type TAttributeParams = {
-  type: pcType;
-  default?: any;
+  type: AttributeSchema;
+  default?: pcType;
   title?: string;
   description?: string;
   placeholder?: string | string[];
@@ -40,6 +39,6 @@ export type TAttributeParams = {
   assetType?: string;
   curves?: string[];
   color?: string;
-  enum?: object[];
+  enum?: string[] | number[];
   schema?: TJsonAttributeSchemaProp[];
 };
