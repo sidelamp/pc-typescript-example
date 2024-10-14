@@ -10,7 +10,8 @@
   "rules": {
     "import/no-extraneous-dependencies": "off",
     "@typescript-eslint/no-use-before-define": "off",
-    "@typescript-eslint/no-inferrable-types": "off"
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   },
   "parserOptions": {
     "sourceType": "module",

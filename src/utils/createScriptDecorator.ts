@@ -1,4 +1,5 @@
 // from https://github.com/Glidias/playcanvas-typescript-babel-intellisense-template/tree/6a35dab6d229c3857673e56861b34cc1a658cb54
+import pc from "playcanvas";
 import { TAttributeParams } from "../types/attributes";
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
@@ -40,6 +41,7 @@ export function attrib<T>(params: TAttributeParams): any {
   return function (
     target: ScriptTypeBase,
     propertyKey: string,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     descriptor: TypedPropertyDescriptor<T>
   ): any {
     if (!target.attributesData) {

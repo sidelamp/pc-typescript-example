@@ -17,6 +17,10 @@ module.exports = {
   },
   output: {
     filename: "index.js",
-    path: path.resolve(__dirname, "dist/scripts"),
+    // eslint-disable-next-line no-undef
+    path: path.resolve(__dirname, "build/scripts"),
   },
+  externals: {
+    playcanvas: 'pc'
+  }
 };
