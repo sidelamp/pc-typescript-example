@@ -8,7 +8,7 @@ class VersionView extends ScriptTypeBase {
     test: number;
 
     initialize() {
-        console.log("hello! ", this.test);
+        console.log("the test is ", this.test);
     }
 }
 

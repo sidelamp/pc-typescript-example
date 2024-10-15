@@ -13,7 +13,7 @@ export enum AttributeSchema {
   curve = "curve",
 };
 
-type pcType = boolean | number | string | pc.Entity | pc.Vec2 | pc.Vec3 | pc.Vec4 | pc.Curve | undefined;
+export type pcType = boolean | number | string | pc.Entity | pc.Vec2 | pc.Vec3 | pc.Vec4 | pc.Curve | undefined;
 
 export type TJsonAttributeSchemaProp = {
   name: string;
@@ -23,7 +23,7 @@ export type TJsonAttributeSchemaProp = {
 };
 
 export type TAttributeParams = {
-  type: AttributeSchema;
+  type?: AttributeSchema;
   default?: pcType;
   title?: string;
   description?: string;
