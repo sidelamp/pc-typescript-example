@@ -1,5 +1,3 @@
-import { Curve, Vec2, Vec3, Vec4 } from "playcanvas";
-
 export enum AttributeSchema {
   boolean = "boolean",
   number = "number",
@@ -15,7 +13,7 @@ export enum AttributeSchema {
   curve = "curve",
 };
 
-type pcType = boolean | number | string | pc.Entity | Vec2 | Vec3 | Vec4 | Curve | undefined;
+type pcType = boolean | number | string | pc.Entity | pc.Vec2 | pc.Vec3 | pc.Vec4 | pc.Curve | undefined;
 
 export type TJsonAttributeSchemaProp = {
   name: string;
