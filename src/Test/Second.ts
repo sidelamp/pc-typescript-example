@@ -1,4 +1,4 @@
-import { TJsonAttributeSchemaProp, AttributeSchema } from "../types/attributes";
+import { TJsonAttributeSchemaProp } from "../types/attributes";
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 import { attrib, createScript } from "../utils/createScriptDecorator";
 
@@ -6,17 +6,17 @@ import { attrib, createScript } from "../utils/createScriptDecorator";
 class Second extends ScriptTypeBase {
     @attrib(
         {
-            type: AttributeSchema.json,
+            type: "json",
             schema: [
                 {
                     name: "prop",
-                    type: AttributeSchema.string,
+                    type: "string",
                     default: ["first", "second", "thrid"],
                     array: true,
                 },
                 {
                     name: "prop2",
-                    type: AttributeSchema.number,
+                    type: "number",
                     default: 1
                 }
             ]

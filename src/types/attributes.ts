@@ -1,19 +1,18 @@
-export enum AttributeSchema {
-  boolean = "boolean",
-  number = "number",
-  string = "string",
-  entity = "entity",
-  asset = "asset",
-  json = "json",
-  rgb = "rgb",
-  rgba = "rgba",
-  vec2 = "vec2",
-  vec3 = "vec3",
-  vec4 = "vec4",
-  curve = "curve",
-};
+export type AttributeSchema =
+  | "string"
+  | "number"
+  | "boolean"
+  | "rgb"
+  | "curve"
+  | "json"
+  | "vec2"
+  | "vec3"
+  | "vec4"
+  | "entity"
+  | "asset"
+  | "rgba";
 
-export type pcType = boolean | number | string | pc.Entity | pc.Vec2 | pc.Vec3 | pc.Vec4 | pc.Curve | TJsonAttributeSchemaProp | undefined;
+export type pcType = boolean | number | number[] | string | pc.Entity | pc.Asset | pc.Vec2 | pc.Vec3 | pc.Vec4 | pc.Curve | pc.Color | pc.Texture | pc.Sprite | undefined;
 
 export type TJsonAttributeSchemaProp = {
   name: string;
