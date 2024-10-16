@@ -1,14 +1,19 @@
-import { AttributeSchema } from "../types/attributes";
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
-import { createScript, attrib } from "../utils/createScriptDecorator";
+import { createScript, attr } from "../utils/createScriptDecorator";
 
 @createScript("versionView")
 class VersionView extends ScriptTypeBase {
-    @attrib({ type: AttributeSchema.number, default: 100 })
-    test: number;
+    @attr()
+    test: string;
+
+    @attr({ default: 100, min: 10, max: 100, step: 10, placeholder: ["hp", "hm"] })
+    maxHP: number;
+
+    @attr()
+    minHP: number;
 
     initialize() {
-        console.log("the test is ", this.test);
+        console.log("the test is ", this);
     }
 }
 
