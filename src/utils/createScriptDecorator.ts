@@ -1,6 +1,6 @@
 // from https://github.com/Glidias/playcanvas-typescript-babel-intellisense-template/tree/6a35dab6d229c3857673e56861b34cc1a658cb54
 import pc from "playcanvas";
-import { AttributeSchema, pcType, TAttributeParams } from "../types/attributes";
+import { AttributeSchema, TAttributeParams } from "../types/attributes";
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 import "reflect-metadata";
 
@@ -38,25 +38,7 @@ export function createScript(name: string) {
   };
 }
 
-export function attrib<T = pcType>(params: TAttributeParams): any {
-  return function (
-    target: ScriptTypeBase,
-    propertyKey: string,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    descriptor: TypedPropertyDescriptor<T>
-  ): any {
-    if (!target.attributesData) {
-      target.attributesData = {};
-    }
-
-    // const prop = Reflect.getOwnPropertyDescriptor(target, propertyKey);
-    // prop?.value;
-
-    target.attributesData[propertyKey] = params;
-  };
-}
-
-export function attr(params?: TAttributeParams): any {
+export function attrib(params?: TAttributeParams): any {
   return function (
     target: ScriptTypeBase,
     propertyKey: string,
@@ -70,39 +52,43 @@ export function attr(params?: TAttributeParams): any {
 
     switch (propertyType) {
       case String:
-        type =  AttributeSchema.string;
+        type = "string";
         break;
 
       case Number:
-        type = AttributeSchema.number;
+        type = "number";
         break;
 
       case Boolean:
-        type = AttributeSchema.boolean;
+        type = "boolean";
         break;
 
       case pc.Entity:
-        type = AttributeSchema.entity;
+        type = "entity";
         break;
 
       case pc.Asset:
-        type = AttributeSchema.asset;
+        type = "asset";
         break;
 
       case pc.Vec2:
-        type = AttributeSchema.vec2;
+        type = "vec2";
         break;
 
       case pc.Vec3:
-        type = AttributeSchema.vec3;
+        type = "vec3";
         break;
 
       case pc.Vec4:
-        type = AttributeSchema.vec4;
+        type = "vec4";
+        break;
+
+      case pc.Color:
+        type = "rgba";
         break;
 
       case pc.Curve:
-        type = AttributeSchema.curve;
+        type = "curve";
         break;
 
       default:
