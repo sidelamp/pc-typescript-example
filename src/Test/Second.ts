@@ -24,7 +24,7 @@ class Second extends ScriptTypeBase {
     property: TJsonAttributeSchemaProp;
 
     initialize(): void {
-        console.log((this.property as any)["prop2"]);
+        console.log((this.property as any)["prop"]);
     }
 }
 

@@ -3,6 +3,7 @@ import { TAttributeParams } from "./attributes";
 
 // Base class to inherit from for script types
 export class ScriptTypeBase {
+  [key: string]: any;
   // custom holder to contain attributesData used for initialization of attributes
   attributesData?: { [key: string]: TAttributeParams };
 

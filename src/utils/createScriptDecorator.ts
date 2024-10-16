@@ -1,7 +1,8 @@
 // from https://github.com/Glidias/playcanvas-typescript-babel-intellisense-template/tree/6a35dab6d229c3857673e56861b34cc1a658cb54
 import pc from "playcanvas";
-import { pcType, TAttributeParams } from "../types/attributes";
+import { AttributeSchema, pcType, TAttributeParams } from "../types/attributes";
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
+import "reflect-metadata";
 
 /**
  * Class decorator allowing the use of ES6 classes
@@ -37,7 +38,7 @@ export function createScript(name: string) {
   };
 }
 
-export function attrib<T extends pcType>(params: TAttributeParams): any {
+export function attrib<T = pcType>(params: TAttributeParams): any {
   return function (
     target: ScriptTypeBase,
     propertyKey: string,
@@ -47,6 +48,70 @@ export function attrib<T extends pcType>(params: TAttributeParams): any {
     if (!target.attributesData) {
       target.attributesData = {};
     }
+
+    // const prop = Reflect.getOwnPropertyDescriptor(target, propertyKey);
+    // prop?.value;
+
     target.attributesData[propertyKey] = params;
+  };
+}
+
+export function attr(params?: TAttributeParams): any {
+  return function (
+    target: ScriptTypeBase,
+    propertyKey: string,
+  ): any {
+    if (!target.attributesData) {
+      target.attributesData = {};
+    }
+
+    const propertyType = Reflect.getMetadata("design:type", target, propertyKey);
+    let type: AttributeSchema;
+
+    switch (propertyType) {
+      case String:
+        type =  AttributeSchema.string;
+        break;
+
+      case Number:
+        type = AttributeSchema.number;
+        break;
+
+      case Boolean:
+        type = AttributeSchema.boolean;
+        break;
+
+      case pc.Entity:
+        type = AttributeSchema.entity;
+        break;
+
+      case pc.Asset:
+        type = AttributeSchema.asset;
+        break;
+
+      case pc.Vec2:
+        type = AttributeSchema.vec2;
+        break;
+
+      case pc.Vec3:
+        type = AttributeSchema.vec3;
+        break;
+
+      case pc.Vec4:
+        type = AttributeSchema.vec4;
+        break;
+
+      case pc.Curve:
+        type = AttributeSchema.curve;
+        break;
+
+      default:
+        if (params?.type)
+          type = params.type;
+        else
+          throw new TypeError("Invalid type");
+    }
+
+    target.attributesData[propertyKey] = { type: type, ...params };
   };
 }
