@@ -20,18 +20,18 @@ export class ScriptBase {
 
   // lifecycle methods
   /**
-   * @function
-   * @name pc.ScriptType#[initialize]
-   * @description Called when script is about to run for the first time.
-   */
-  initialize?(): void;
+  * @function
+  * @name pc.ScriptType#[initialize]
+  * @description Called when script is about to run for the first time.
+  */
+  public onInitialize?(): void;
 
   /**
-   * @function
-   * @name pc.ScriptType#[postInitialize]
-   * @description Called after all initialize methods are executed in the same tick or enabling chain of actions.
-   */
-  postInitialize?(): void;
+ * @function
+ * @name pc.ScriptType#[postInitialize]
+ * @description Called after all initialize methods are executed in the same tick or enabling chain of actions.
+ */
+  public onPostInitialize?(): void;
 
   /**
    * @function
@@ -39,7 +39,7 @@ export class ScriptBase {
    * @description Called for enabled (running state) scripts on each tick.
    * @param {number} dt - The delta time in seconds since the last frame.
    */
-  update?(dt: number): void;
+  public update?(dt: number): void;
 
   /**
    * @function
@@ -47,7 +47,7 @@ export class ScriptBase {
    * @description Called for enabled (running state) scripts on each tick, after update.
    * @param {number} dt - The delta time in seconds since the last frame.
    */
-  postUpdate?(dt: number): void;
+  public postUpdate?(dt: number): void;
   /**
    * @function
    * @name pc.ScriptType#[swap]
@@ -60,7 +60,38 @@ export class ScriptBase {
    *    this.property = concreteClass.property;
    * };
   */
-  swap?(old: ScriptBase): void;
+  public swap?(old: ScriptBase): void;
+
+  public onDestroy?(): void;
+
+  //#region private methods
+  /**
+   * @function
+   * @name pc.ScriptType#[initialize]
+   * @description Called when script is about to run for the first time.
+   */
+  private initialize(): void {
+    if (this.onDestroy) {
+      this.on?.("destroy", this.onDestroy, this);
+    }
+
+    if (this.onInitialize)
+      this.onInitialize();
+  }
+
+  /**
+   * @function
+   * @name pc.ScriptType#[postInitialize]
+   * @description Called after all initialize methods are executed in the same tick or enabling chain of actions.
+   */
+  private postInitialize?(): void {
+    // if (!this.hasEvent?.("destroy") && this.onDestroy)
+    //   this.on?.("destroy", this.onDestroy, this);
+
+    if (this.onPostInitialize)
+      this.onPostInitialize();
+  }
+  //#endregion private methods
 
   // attributes
   readonly attributes: pc.ScriptAttributes;
