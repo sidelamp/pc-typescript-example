@@ -1,0 +1,8 @@
+{
+  "PLAYCANVAS_API_KEY": "1234",
+  "PLAYCANVAS_BRANCH_ID": "123-123-123",
+  "PLAYCANVAS_PROJECT_ID": 1231231,
+  "PLAYCANVAS_BAD_FILE_REG": "^\\.|~$|jsconfig.json",
+  "PLAYCANVAS_BAD_FOLDER_REG": "^\\.|typings|node_modules",
+  "PLAYCANVAS_TARGET_SUBDIR": "build"
+}
