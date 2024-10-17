@@ -26,12 +26,14 @@ export class ScriptTypeBase {
    * @description Called when script is about to run for the first time.
    */
   initialize?(): void;
+
   /**
    * @function
    * @name pc.ScriptType#[postInitialize]
    * @description Called after all initialize methods are executed in the same tick or enabling chain of actions.
    */
   postInitialize?(): void;
+
   /**
    * @function
    * @name pc.ScriptType#[update]
@@ -39,6 +41,7 @@ export class ScriptTypeBase {
    * @param {number} dt - The delta time in seconds since the last frame.
    */
   update?(dt: number): void;
+
   /**
    * @function
    * @name pc.ScriptType#[postUpdate]
@@ -52,8 +55,14 @@ export class ScriptTypeBase {
    * @description Called when a ScriptType that already exists in the registry
    * gets redefined. If the new ScriptType has a `swap` method in its prototype,
    * then it will be executed to perform hot-reload at runtime.
-   */
-  swap?(): void;
+   * @example
+   * swap(old: ScriptTypeBase): void {
+   *    const concreteClass = <ConcreteClass>old;
+   *    this.property = concreteClass.property;
+   * };
+  */
+  swap?(old: ScriptTypeBase): void;
+
   /**
    * @function
    * @name pc.EventHandler#on
@@ -68,7 +77,6 @@ export class ScriptTypeBase {
    * });
    * obj.fire('test', 1, 2); // prints 3 to the console
    */
-
   // attributes
   readonly attributes: pc.ScriptAttributes;
 
@@ -98,6 +106,7 @@ export class ScriptTypeBase {
    * @description Called when script is about to run for the first time.
    */
   on?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandler;
+
   /**
    * @function
    * @name pc.EventHandler#off
