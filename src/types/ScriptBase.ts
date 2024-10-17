@@ -27,6 +27,24 @@ export class ScriptBase {
   public onInitialize?(): void;
 
   /**
+  * @function
+  * @description Called when script is about to enable.
+  */
+  public onEnable?(): void;
+
+  /**
+  * @function
+  * @description Called when script is about to disable.
+  */
+  public onDisable?(): void;
+
+  /**
+  * @function
+  * @description Called when script is about to disable.
+  */
+  public onDestroy?(): void;
+
+  /**
  * @function
  * @name pc.ScriptType#[postInitialize]
  * @description Called after all initialize methods are executed in the same tick or enabling chain of actions.
@@ -62,8 +80,6 @@ export class ScriptBase {
   */
   public swap?(old: ScriptBase): void;
 
-  public onDestroy?(): void;
-
   //#region private methods
   /**
    * @function
@@ -71,9 +87,24 @@ export class ScriptBase {
    * @description Called when script is about to run for the first time.
    */
   private initialize(): void {
-    if (this.onDestroy) {
-      this.on?.("destroy", this.onDestroy, this);
-    }
+    const onDestroy = () => {
+      if (this.hasEvent?.("enable"))
+        this.off?.("enable", this.onEnable, this);
+
+      if (this.hasEvent?.("disable"))
+        this.off?.("disable", this.onDisable, this);
+
+      this.onDestroy?.();
+    };
+
+    if (this.onDestroy)
+      this.on?.("destroy", onDestroy, this);
+
+    if (this.onEnable)
+      this.on?.("enable", this.onEnable, this);
+
+    if (this.onDisable)
+      this.on?.("disable", this.onDisable, this);
 
     this.onInitialize?.();
   }

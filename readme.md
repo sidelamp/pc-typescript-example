@@ -63,9 +63,10 @@ class Shooting extends ScriptTypeBase {
   isReloading: boolean = false;
 
   // methods
-  onInitialize() {}
-
+  onInitialize() {} // when obj init first time
   onDestroy() {} // when obj destroying
+  onEnable() {} // when obj enabled
+  onDisable() {} // when obj disabled
 }
 
 // default export at the end
