@@ -2,7 +2,7 @@
 import { TAttributeParams } from "./attributes";
 
 // Base class to inherit from for script types
-export class ScriptTypeBase {
+export class ScriptBase {
   // custom holder to contain attributesData used for initialization of attributes
   attributesData?: { [key: string]: TAttributeParams };
 
@@ -60,7 +60,7 @@ export class ScriptTypeBase {
    *    this.property = concreteClass.property;
    * };
   */
-  swap?(old: ScriptTypeBase): void;
+  swap?(old: ScriptBase): void;
 
   // attributes
   readonly attributes: pc.ScriptAttributes;
