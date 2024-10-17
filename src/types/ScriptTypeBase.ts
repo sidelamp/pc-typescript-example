@@ -3,7 +3,6 @@ import { TAttributeParams } from "./attributes";
 
 // Base class to inherit from for script types
 export class ScriptTypeBase {
-  [key: string]: any;
   // custom holder to contain attributesData used for initialization of attributes
   attributesData?: { [key: string]: TAttributeParams };
 
@@ -63,6 +62,9 @@ export class ScriptTypeBase {
   */
   swap?(old: ScriptTypeBase): void;
 
+  // attributes
+  readonly attributes: pc.ScriptAttributes;
+
   /**
    * @function
    * @name pc.EventHandler#on
@@ -77,30 +79,7 @@ export class ScriptTypeBase {
    * });
    * obj.fire('test', 1, 2); // prints 3 to the console
    */
-  // attributes
-  readonly attributes: pc.ScriptAttributes;
-
-  // Events (modded to be optional below to get it to run!)
-  /**
-   * @readonly
-   * @static
-   * @function
-   * @name pc.ScriptType.extend
-   * @param {object} methods - Object with methods, where key - is name of method, and value - is function.
-   * @description Shorthand function to extend Script Type prototype with list of methods.
-   * @example
-   * var PlayerController = pc.createScript('playerController');
-   *
-   * PlayerController.extend({
-   *     initialize: function () {
-   *         // called once on initialize
-   *     },
-   *     update: function (dt) {
-   *         // called each tick
-   *     }
-   * });
-   */
-  on?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandler;
+  on?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandle;
 
   /**
    * @function
@@ -121,7 +100,7 @@ export class ScriptTypeBase {
    * obj.off('test', handler); // Removes all handler functions, called 'test'
    * obj.off('test', handler, this); // Removes all hander functions, called 'test' with scope this
    */
-  off?(name?: string, callback?: pc.HandleEventCallback, scope?: any): pc.EventHandler;
+  off?(name?: string, callback?: pc.HandleEventCallback, scope?: any): pc.EventHandle;
 
   /**
    * @function
@@ -167,7 +146,7 @@ export class ScriptTypeBase {
    * obj.fire('test', 1, 2); // prints 3 to the console
    * obj.fire('test', 1, 2); // not going to get handled
    */
-  once?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandler;
+  once?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandle;
 
   /**
    * @function
