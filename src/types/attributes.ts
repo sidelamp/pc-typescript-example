@@ -1,3 +1,5 @@
+export type pcType = boolean | number | number[] | string | pc.Entity | pc.Asset | pc.Vec2 | pc.Vec3 | pc.Vec4 | pc.Curve | pc.Color | pc.Texture | pc.Sprite | undefined;
+
 export type AttributeSchema =
   | "string"
   | "number"
@@ -11,8 +13,6 @@ export type AttributeSchema =
   | "entity"
   | "asset"
   | "rgba";
-
-export type pcType = boolean | number | number[] | string | pc.Entity | pc.Asset | pc.Vec2 | pc.Vec3 | pc.Vec4 | pc.Curve | pc.Color | pc.Texture | pc.Sprite | undefined;
 
 export type TJsonAttributeSchemaProp = {
   name: string;

@@ -127,6 +127,7 @@ export class ScriptTypeBase {
    * obj.off('test', handler, this); // Removes all hander functions, called 'test' with scope this
    */
   off?(name?: string, callback?: pc.HandleEventCallback, scope?: any): pc.EventHandler;
+
   /**
    * @function
    * @name pc.EventHandler#fire
@@ -155,6 +156,7 @@ export class ScriptTypeBase {
     arg7?: any,
     arg8?: any
   ): pc.EventHandler;
+
   /**
    * @function
    * @name pc.EventHandler#once
@@ -171,6 +173,7 @@ export class ScriptTypeBase {
    * obj.fire('test', 1, 2); // not going to get handled
    */
   once?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandler;
+
   /**
    * @function
    * @name pc.EventHandler#hasEvent
@@ -189,10 +192,12 @@ export class ScriptTypeBase {
    * belongs to.
    */
   app: pc.Application;
+
   /**
    * The {@link pc.Entity} that the instance of this type belongs to.
    */
   entity: pc.Entity;
+
   /**
    * True if the instance of this type is in running state. False
    * when script is not running, because the Entity or any of its parents are disabled or the
