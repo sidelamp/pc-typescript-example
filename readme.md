@@ -20,10 +20,11 @@ Forum post - https://forum.playcanvas.com/t/example-template-project-with-typesc
 
 ## npm scripts
 
-| Command         | Description                      |
-| --------------- | -------------------------------- |
-| `npm run build` | Compiles tsc files               |
-| `npm run push`  | `push` to playcanvas.com project |
+| Command                 | Description                      |
+| ----------------------- | -------------------------------- |
+| `npm run build:debug`   | Development build                |
+| `npm run build:release` | Production build                 |
+| `npm run push`          | `push` to playcanvas.com project |
 
 ## Conventions
 
