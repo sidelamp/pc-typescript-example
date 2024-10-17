@@ -75,8 +75,7 @@ export class ScriptBase {
       this.on?.("destroy", this.onDestroy, this);
     }
 
-    if (this.onInitialize)
-      this.onInitialize();
+    this.onInitialize?.();
   }
 
   /**
@@ -88,8 +87,7 @@ export class ScriptBase {
     // if (!this.hasEvent?.("destroy") && this.onDestroy)
     //   this.on?.("destroy", this.onDestroy, this);
 
-    if (this.onPostInitialize)
-      this.onPostInitialize();
+    this.onPostInitialize?.();
   }
   //#endregion private methods
 
