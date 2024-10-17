@@ -1,4 +1,4 @@
-# Playcanvas typescript example
+# Playcanvas typescript example (origin)
 
 Project - https://playcanvas.com/project/913369/overview/typescript-example
 
@@ -17,14 +17,13 @@ Forum post - https://forum.playcanvas.com/t/example-template-project-with-typesc
   - `PLAYCANVAS_API_KEY`
   - `PLAYCANVAS_BRANCH_ID`
   - `PLAYCANVAS_PROJECT_ID`
-- now you ready to go - `npm run dev`
 
 ## npm scripts
 
-| Command         | Description                                           |
-| --------------- | ----------------------------------------------------- |
-| `npm run dev`   | Compiles tsc files and push to playcanvas.com project |
-| `npm run build` | Performs `build` and `push` to playcanvas.com project |
+| Command         | Description                      |
+| --------------- | -------------------------------- |
+| `npm run build` | Compiles tsc files               |
+| `npm run push`  | `push` to playcanvas.com project |
 
 ## Conventions
 
@@ -32,14 +31,10 @@ Scripts preferable structure
 
 ```ts
 // typings and libs goes first, split by empty line
-import { ScriptTypeBase } from "../../types/ScriptTypeBase";
-
-// components second
-import { falledCheckEvents } from "./falledCheck";
+import { ScriptTypeBase } from "../types/ScriptTypeBase";
 
 // utils third
-import { createScript, attrib } from "../../utils/createScriptDecorator";
-import { ebEvents, events } from "../../utils/events";
+import { createScript, attrib } from "../utils/createScriptDecorator";
 
 // consts here
 const defaultAmmoCount = 30;
@@ -47,13 +42,17 @@ const defaultAmmoCount = 30;
 @createScript("shooting")
 class Shooting extends ScriptTypeBase {
   // attributes
-  @attrib({ type: "boolean", default: true })
+  @attrib({ default: true })
   autoReload: boolean;
+
+  @attrib()
+  fireButton: number;
+
   @attrib({
-    type: "number",
     default: 1,
     min: 0.01,
     description: "Reload time in seconds",
+    placeholder: "sec",
   })
   reloadTime: number;
 
