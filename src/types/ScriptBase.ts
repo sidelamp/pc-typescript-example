@@ -74,10 +74,10 @@ export class ScriptBase {
    * @param {object} [scope] - Object to use as 'this' when the event is fired, defaults to current this.
    * @returns {pc.EventHandler} Self for chaining.
    * @example
-   * obj.on('test', function (a, b) {
+   * this.on?.('test', function (a, b) {
    *     console.log(a + b);
    * });
-   * obj.fire('test', 1, 2); // prints 3 to the console
+   * obj.fire?.('test', 1, 2); // prints 3 to the console
    */
   on?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandle;
 
@@ -93,12 +93,12 @@ export class ScriptBase {
    * @example
    * var handler = function () {
    * };
-   * obj.on('test', handler);
+   * obj.on?.('test', handler);
    *
-   * obj.off(); // Removes all events
-   * obj.off('test'); // Removes all events called 'test'
-   * obj.off('test', handler); // Removes all handler functions, called 'test'
-   * obj.off('test', handler, this); // Removes all hander functions, called 'test' with scope this
+   * obj.off?.(); // Removes all events
+   * obj.off?.('test'); // Removes all events called 'test'
+   * obj.off?.('test', handler); // Removes all handler functions, called 'test'
+   * obj.off?.('test', handler, this); // Removes all hander functions, called 'test' with scope this
    */
   off?(name?: string, callback?: pc.HandleEventCallback, scope?: any): pc.EventHandle;
 
@@ -117,7 +117,7 @@ export class ScriptBase {
    * @param {*} [arg8] - Eighth argument that is passed to the event handler.
    * @returns {pc.EventHandler} Self for chaining.
    * @example
-   * obj.fire('test', 'This is the message');
+   * obj.fire?.('test', 'This is the message');
    */
   fire?(
     name: any,
@@ -140,11 +140,11 @@ export class ScriptBase {
    * @param {object} [scope] - Object to use as 'this' when the event is fired, defaults to current this.
    * @returns {pc.EventHandler} Self for chaining.
    * @example
-   * obj.once('test', function (a, b) {
+   * obj.once?.('test', function (a, b) {
    *     console.log(a + b);
    * });
-   * obj.fire('test', 1, 2); // prints 3 to the console
-   * obj.fire('test', 1, 2); // not going to get handled
+   * obj.fire?.('test', 1, 2); // prints 3 to the console
+   * obj.fire?.('test', 1, 2); // not going to get handled
    */
   once?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandle;
 
@@ -155,9 +155,9 @@ export class ScriptBase {
    * @param {string} name - The name of the event to test.
    * @returns {boolean} True if the object has handlers bound to the specified event name.
    * @example
-   * obj.on('test', function () { }); // bind an event to 'test'
-   * obj.hasEvent('test'); // returns true
-   * obj.hasEvent('hello'); // returns false
+   * obj.on?.('test', function () { }); // bind an event to 'test'
+   * obj.hasEvent?.('test'); // returns true
+   * obj.hasEvent?.('hello'); // returns false
    */
   hasEvent?(name: string): boolean;
 
