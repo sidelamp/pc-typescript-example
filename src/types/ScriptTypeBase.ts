@@ -100,11 +100,6 @@ export class ScriptTypeBase {
    *     }
    * });
    */
-  /**
-   * @function
-   * @name pc.ScriptType#[initialize]
-   * @description Called when script is about to run for the first time.
-   */
   on?(name: string, callback: pc.HandleEventCallback, scope?: any): pc.EventHandler;
 
   /**

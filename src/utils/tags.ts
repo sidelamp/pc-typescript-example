@@ -1,6 +1,5 @@
 export const entityTags = {
   ground: "ground",
-  damageable: "damageable",
   player: "player",
 } as const;
 
