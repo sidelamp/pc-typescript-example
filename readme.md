@@ -1,8 +1,4 @@
-# Playcanvas typescript example (origin)
-
-Project - https://playcanvas.com/project/913369/overview/typescript-example
-
-Build - https://playcanv.as/p/KRxr5lon/
+# Playcanvas typescript example
 
 Forum post - https://forum.playcanvas.com/t/example-template-project-with-typescript/25272
 
@@ -31,10 +27,7 @@ Forum post - https://forum.playcanvas.com/t/example-template-project-with-typesc
 Scripts preferable structure
 
 ```ts
-// typings and libs goes first, split by empty line
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
-
-// utils third
 import { createScript, attrib } from "../utils/createScriptDecorator";
 
 // consts here
@@ -58,8 +51,6 @@ class Shooting extends ScriptTypeBase {
   reloadTime: number;
 
   // local properties
-  shotTimer: TInterval;
-  reloadingTimer: TTimeout;
   isReloading: boolean = false;
 
   // methods
