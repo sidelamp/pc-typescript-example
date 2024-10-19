@@ -94,6 +94,7 @@ export class ScriptBase {
       if (this.hasEvent?.("disable"))
         this.off?.("disable", this.onDisable, this);
 
+      this.off?.("destroy", onDestroy, this);
       this.onDestroy?.();
     };
 
