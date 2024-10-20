@@ -36,7 +36,7 @@ class Player extends ScriptTypeBase {
   @attrib()
   public maxHP: number;
 
-  @attrib({min: 0})
+  @attrib({ min: 0 })
   public minHP: number;
 
   // methods
@@ -48,7 +48,7 @@ class Player extends ScriptTypeBase {
 
 @createScript("somePopup")
 class SomePopup extends PopupBase {
-  onInitialize(){
+  onInitialize() {
     this.onInitialize();
   }
 }
@@ -97,4 +97,13 @@ class SomePopup extends PopupBase {
 }
 
 export SomePopup;
+```
+
+Use tween
+
+```ts
+this.entity
+  .tween(this.entity.getLocalScale())
+  .to({ x: 1.5, y: 1.5, z: 1.5 }, 0.25, pc.BackInOut)
+  .start();
 ```
