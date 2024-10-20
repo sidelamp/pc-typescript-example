@@ -30,28 +30,14 @@ Scripts preferable structure
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 import { createScript, attrib } from "../utils/createScriptDecorator";
 
-// consts here
-const defaultAmmoCount = 30;
-
-@createScript("shooting")
-class Shooting extends ScriptTypeBase {
+@createScript("Player")
+class Player extends ScriptTypeBase {
   // attributes
-  @attrib({ default: true })
-  autoReload: boolean;
-
   @attrib()
-  fireButton: number;
+  public maxHP: number;
 
-  @attrib({
-    default: 1,
-    min: 0.01,
-    description: "Reload time in seconds",
-    placeholder: "sec",
-  })
-  reloadTime: number;
-
-  // local properties
-  isReloading: boolean = false;
+  @attrib({min: 0})
+  public minHP: number;
 
   // methods
   onInitialize() {} // when obj init first time
@@ -60,6 +46,55 @@ class Shooting extends ScriptTypeBase {
   onDisable() {} // when obj disabled
 }
 
+@createScript("somePopup")
+class SomePopup extends PopupBase {
+  onInitialize(){
+    this.onInitialize();
+  }
+}
+
 // default export at the end
-export default Shooting;
+export default Player;
+```
+
+Class inheritance
+
+```ts
+import { ScriptTypeBase } from "../types/ScriptTypeBase";
+import { createScript, attrib } from "../utils/createScriptDecorator";
+
+class PopupBase extends ScriptTypeBase {
+  // attributes
+  @attrib()
+  isShow: boolean;
+
+  // or u can use
+  // @attrib({default: true, title: "show on initialize"})
+  // isShow: boolean;
+
+  // methods
+  onInitialize() {// when obj init first time
+    this.entity.enabled = this.isShow;
+  }
+  onDestroy() {} // when obj destroying
+  onEnable() {} // when obj enabled
+  onDisable() {} // when obj disabled
+
+  public show(){
+    this.entity.enabled = true;
+  }
+
+  public close(){
+    this.entity.enabled = false;
+  }
+}
+
+@createScript("somePopup")
+class SomePopup extends PopupBase {
+  onInitialize(){
+    this.onInitialize();
+  }
+}
+
+export SomePopup;
 ```
