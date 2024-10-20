@@ -63,7 +63,7 @@ Class inheritance
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 import { createScript, attrib } from "../utils/createScriptDecorator";
 
-class abstract PopupBase extends ScriptTypeBase {
+abstract class PopupBase extends ScriptTypeBase {
   // attributes
   @attrib()
   isShow: boolean;
