@@ -1,4 +1,4 @@
-export type pcType = boolean | number | number[] | string | pc.Entity | pc.Asset | pc.Vec2 | pc.Vec3 | pc.Vec4 | pc.Curve | pc.Color | pc.Texture | pc.Sprite | undefined;
+export type pcType = boolean | number | number[] | string [] | pc.Entity | pc.Asset | pc.Vec2 | pc.Vec3 | pc.Vec4 | pc.Curve | pc.Color | pc.Texture | pc.Sprite | undefined;
 
 export type AttributeSchema =
   | "string"
@@ -15,6 +15,8 @@ export type AttributeSchema =
   | "rgba";
 
 export type TAttributeParams = {
+  [key: string]: any;
+
   type?: AttributeSchema;
   name?: string;
   default?: pcType;
