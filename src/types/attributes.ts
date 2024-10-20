@@ -14,15 +14,9 @@ export type AttributeSchema =
   | "asset"
   | "rgba";
 
-export type TJsonAttributeSchemaProp = {
-  name: string;
-  type: AttributeSchema;
-  default?: pcType | pcType[];
-  array?: boolean;
-};
-
 export type TAttributeParams = {
   type?: AttributeSchema;
+  name?: string;
   default?: pcType;
   title?: string;
   description?: string;
@@ -36,6 +30,6 @@ export type TAttributeParams = {
   assetType?: string;
   curves?: string[];
   color?: string;
-  enum?: string[] | number[];
-  schema?: TJsonAttributeSchemaProp[];
+  enum?: object[];
+  schema?: TAttributeParams[];
 };
