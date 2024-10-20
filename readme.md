@@ -31,7 +31,7 @@ import { ScriptTypeBase } from "../types/ScriptTypeBase";
 import { createScript, attrib } from "../utils/createScriptDecorator";
 
 @createScript("Player")
-class Player extends ScriptTypeBase {
+class Player extends ScriptBase {
   // attributes
   @attrib()
   public maxHP: number;
@@ -63,7 +63,7 @@ Class inheritance
 import { ScriptTypeBase } from "../types/ScriptTypeBase";
 import { createScript, attrib } from "../utils/createScriptDecorator";
 
-abstract class PopupBase extends ScriptTypeBase {
+abstract class PopupBase extends ScriptBase {
   // attributes
   @attrib()
   isShow: boolean;
