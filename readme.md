@@ -106,4 +106,14 @@ this.entity
   .tween(this.entity.getLocalScale())
   .to({ x: 1.5, y: 1.5, z: 1.5 }, 0.25, pc.BackInOut)
   .start();
+
+let element = {
+  width: 100,
+  height: 100,
+};
+
+this.entity
+  .tween(this.entity.element)
+  .to(element, properties.duration, pc.Linear)
+  .start();
 ```

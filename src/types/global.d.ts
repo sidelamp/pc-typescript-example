@@ -195,7 +195,7 @@ declare global {
        * 
        * this.entity
        *      .tween(this.entity.element)
-       *      .to(element, .25, pc.BackInOut)
+       *      .to(element, .25, pc.BackIn)
        *      .start();
        */
       tween(target: any, options?: { element?: string }): Tween;
