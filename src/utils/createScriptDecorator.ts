@@ -1,5 +1,4 @@
 // from https://github.com/Glidias/playcanvas-typescript-babel-intellisense-template/tree/6a35dab6d229c3857673e56861b34cc1a658cb54
-import pc from "playcanvas";
 import { AttributeSchema, TAttributeParams } from "../types/attributes";
 import { ScriptBase } from "../types/ScriptBase";
 import "reflect-metadata";
