@@ -1,7 +1,6 @@
-// from https://github.com/Glidias/playcanvas-typescript-babel-intellisense-template/tree/6a35dab6d229c3857673e56861b34cc1a658cb54
-import { AttributeSchema, TAttributeParams } from "../types/attributes";
-import { ScriptBase } from "../types/ScriptBase";
 import "reflect-metadata";
+import { AttributeParams, AttributeSchema } from "../../../types/attributes";
+import { ScriptBase } from "../../../types/scriptBase";
 
 /**
  * Class decorator allowing the use of ES6 classes
@@ -37,13 +36,14 @@ export function createScript(name: string) {
   };
 }
 
-export function attrib(params?: TAttributeParams): any {
+export function attrib(params?: AttributeParams): any {
   return function (
     target: ScriptBase,
     propertyKey: string,
   ): any {
-    if (!target.attributesData) {
-      target.attributesData = {};
+    if (!Object.prototype.hasOwnProperty.call(target, "attributesData")) {
+      const parentAttributes = target.attributesData || {};
+      target.attributesData = { ...parentAttributes };
     }
 
     const propertyType = Reflect.getMetadata("design:type", target, propertyKey);
@@ -97,6 +97,7 @@ export function attrib(params?: TAttributeParams): any {
           throw new TypeError("Invalid type");
     }
 
-    target.attributesData[propertyKey] = { type: type, ...params };
+    if (target.attributesData)
+      target.attributesData[propertyKey] = { type: type, ...params };
   };
 }
