@@ -49,7 +49,7 @@ class Player extends ScriptBase {
 @createScript("somePopup")
 class SomePopup extends PopupBase {
   onInitialize() {
-    this.onInitialize();
+    super.onInitialize();
   }
 }
 
@@ -92,7 +92,7 @@ abstract class PopupBase extends ScriptBase {
 @createScript("somePopup")
 class SomePopup extends PopupBase {
   onInitialize(){
-    this.onInitialize();
+    super.onInitialize();
   }
 }
 
